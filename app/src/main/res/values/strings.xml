@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">StarWarsApp</string>
+	<string name="title_app">Personagens</string>
+	<string name="button_app">Próximo Personagem</string>
+    <string name="luke_skywalker">"Nome: "Luke Skywalker,"
+	"Altura": "172",
+	"Peso": "77",
+	"Cor do cabelo": "blond",
+	"Cor da pele": "fair",
+	"Cor dos olhos": "blue",
+	"Ano de nascimento": "19BBY",
+	"Gênero": "male",
+	"Mundo natal": "https://swapi.dev/api/planets/1/"
+    </string>
 </resources>
