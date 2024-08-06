@@ -39,7 +39,17 @@ dependencies {
   implementation(libs.material)
   implementation(libs.androidx.activity)
   implementation(libs.androidx.constraintlayout)
+  implementation(libs.transport.runtime)
+  implementation(libs.firebase.dataconnect)
+  implementation(libs.firebase.inappmessaging)
   testImplementation(libs.junit)
   androidTestImplementation(libs.androidx.junit)
   androidTestImplementation(libs.androidx.espresso.core)
+  implementation("com.squareup.retrofit2:retrofit:2.9.0")
+  implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+  implementation("io.ktor:ktor-client-core:2.0.0")
+  implementation("io.ktor:ktor-client-cio:2.0.0")
+  implementation("io.ktor:ktor-client-serialization:2.0.0")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.2")
+
 }

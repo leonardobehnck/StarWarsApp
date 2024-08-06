@@ -1,15 +1,17 @@
 <resources>
     <string name="app_name">StarWarsApp</string>
-	<string name="title_app">Personagens</string>
-	<string name="button_app">Próximo Personagem</string>
-    <string name="luke_skywalker">"Nome: "Luke Skywalker,"
-	"Altura": "172",
-	"Peso": "77",
-	"Cor do cabelo": "blond",
-	"Cor da pele": "fair",
-	"Cor dos olhos": "blue",
-	"Ano de nascimento": "19BBY",
-	"Gênero": "male",
-	"Mundo natal": "https://swapi.dev/api/planets/1/"
+	<string name="title_app">Meu primeiro App :)</string>
+	<string name="button_app">Selecionar Personagem</string>
+	<string name="button_back">Voltar</string>
+    <string name="luke_skywalker">Seja bem vindo(a) ao meu primeiro App.
+		Avance para selecionar o personagem e obter uma lista das características,
+		que foram consumidas de uma API. Obrigado!
     </string>
+	<string name="prompt">Selecione...</string>
+	<string-array name="personagens">
+		<item>Luke SkyWalker</item>
+		<item>C3Po</item>
+		<item>teste</item>
+		<item>teste</item>
+	</string-array>
 </resources>
