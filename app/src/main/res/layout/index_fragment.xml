@@ -1,34 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    android:backgroundTintMode="screen"
-    tools:context=".ui.MainActivity">
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnBack"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_arrow_back"
-        app:backgroundTint="@color/white"
-        android:padding="5dp"
-        android:layout_margin="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black">
 
     <ImageView
         android:id="@+id/applogo"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginTop="50dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/star_wars_logo"
-        tools:ignore="MissingConstraints" />
+        />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -42,13 +26,13 @@
         />
 
     <TextView
-        android:id="@+id/titulo"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:fontFamily="monospace"
-        android:text="Personagens"
+        android:text="@string/title_app"
         android:textColor="#FFE81F"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,57 +40,32 @@
         />
 
     <TextView
-        android:id="@+id/editTextTextMultiLine"
+        android:id="@+id/introducao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:text="Selecione o personagem na lista abaixo:"
+        android:text="@string/luke_skywalker"
         android:textColor="@color/white"
         android:textSize="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/titulo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
          />
 
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_margin="25dp"
-        android:entries="@array/personagens"
-        android:background="@color/white"
-        android:dropDownSelector="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine"
-        />
-
-
-    <ListView
-        android:id="@+id/lista"
-        android:layout_width="match_parent"
-        android:padding="10dp"
-        android:layout_margin="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnNext"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
-        android:layout_height="300dp"
-        android:background="@color/white"
-        >
-
-    </ListView>
     <Button
         android:id="@+id/btnNext"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/yellowApp"
-        android:text="@string/button_back"
+        android:backgroundTint="#FFE81F"
+        android:text="@string/button_app"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
-
-
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
