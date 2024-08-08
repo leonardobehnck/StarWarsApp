@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.starwarsapp.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONArray
+import org.json.JSONException
 import org.json.JSONObject
 import org.json.JSONTokener
 import java.io.BufferedReader
@@ -21,6 +22,7 @@ import java.net.URL
 
 class PersonagemActivity : AppCompatActivity() {
   lateinit var btnNext: Button
+  lateinit var btnBack1: Button
   lateinit var lista: ListView
   lateinit var btnBack: FloatingActionButton
 
@@ -33,7 +35,7 @@ class PersonagemActivity : AppCompatActivity() {
   }
 
   fun setupView() {
-    btnNext = findViewById(R.id.btnNext)
+    btnBack1 = findViewById(R.id.btnBack1)
     btnBack = findViewById(R.id.btnBack)
     lista = findViewById(R.id.lista)
   }
@@ -55,7 +57,7 @@ class PersonagemActivity : AppCompatActivity() {
   }
 
   fun setupListeners() {
-    btnNext.setOnClickListener {
+    btnBack1.setOnClickListener {
       //startActivity(Intent(this, MainActivity::class.java))
       GetCharacterInformation().execute("https://swapi.dev/api/people/?format=json")
     }
@@ -82,8 +84,6 @@ class PersonagemActivity : AppCompatActivity() {
       try {
         val urlBase = URL(url[0])
 
-
-
         urlConnection = urlBase.openConnection() as HttpURLConnection
         // timeout de 60.000ms
         urlConnection.connectTimeout = 60000
@@ -102,52 +102,45 @@ class PersonagemActivity : AppCompatActivity() {
     }
 
     override fun onProgressUpdate(vararg values: String?) {
-      try {
-        // Implementação anterior
-        //var json: JSONObject
-        //values[0]?.let {
-          //var json = JSONObject(it)
+    values[0]?.let {
+    try {
+        val jsonObject = JSONObject(it)
+        val resultsArray = jsonObject.getJSONArray("results")
+        for (i in 0 until resultsArray.length()) {
+            val character = resultsArray.getJSONObject(i)
+            val name = character.getString("name")
+            Log.d("Character Name", name)
+        }
+    } catch (e: JSONException) {
+        Log.e("JSON Error", "Error parsing JSON", e)
+    }
+    }
 
-        val jsonArray = JSONTokener(values[0]).nextValue() as JSONArray
-          for(i in 0 until jsonArray.length()) {
-
-            val id = jsonArray.getJSONObject(i).getString("id")
-
-            Log.d("ID:", id)
-          }
-
-      } catch (ex: Exception) {
-
-      }
     }
 
 
+      //Função não utilizada
+      private fun streamToString(inputStream: InputStream): String {
+        val bufferReader = BufferedReader(InputStreamReader(inputStream))
+        var line: String
+        var result = ""
 
-    //Função não utilizada
-    private fun streamToString(inputStream: InputStream) : String {
-      val bufferReader = BufferedReader(InputStreamReader(inputStream))
-      var line: String
-      var result = ""
-
-      try {
-        do {
-          line = bufferReader.readLine()
-          line?.let{
-            result += line
-          }
-        } while(true)
-      } catch (ex: Exception) {
-        Log.e("Erro", "Erro ao parcelar Stream")
+        try {
+          do {
+            line = bufferReader.readLine()
+            line?.let {
+              result += line
+            }
+          } while (true)
+        } catch (ex: Exception) {
+          Log.e("Erro", "Erro ao parcelar Stream")
+        }
+        return result
       }
-      return result
+
+
     }
 
-
-
-
-
-
-  }
 }
 
 
