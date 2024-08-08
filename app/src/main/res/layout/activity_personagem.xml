@@ -14,9 +14,9 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_arrow_back"
-        app:backgroundTint="@color/white"
-        android:padding="5dp"
+        android:backgroundTintMode="add"
         android:layout_margin="10dp"
+        app:backgroundTint="@color/yellowApp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

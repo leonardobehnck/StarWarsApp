@@ -18,3 +18,11 @@ class ChacaracterFactory {
   )
 }
 
+
+//HTTP
+// - VERBO GET -> Recuperar informações
+// - POST -> Enviar informações para servidor
+// - DELETE -> Deletar algum recurso
+// - PUT -> Alterar uma entidade como um todo
+// - PATCH -> Alterar um atributo da entidade
+//
