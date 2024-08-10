@@ -8,10 +8,8 @@
 		que foram consumidas de uma API. Obrigado!
     </string>
 	<string name="prompt">Selecione...</string>
-	<string-array name="personagens">
+	<string-array name="characters">
 		<item>Luke SkyWalker</item>
 		<item>C3Po</item>
-		<item>teste</item>
-		<item>teste</item>
 	</string-array>
 </resources>
