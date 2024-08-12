@@ -1,4 +1,6 @@
-#StarWarsApp
+
+#  StarWarsApp 
+
 ## 📁 Aplicativo desenvolvido em Kotlin/Android
 
 ## :hammer: Funcionalidades do projeto
