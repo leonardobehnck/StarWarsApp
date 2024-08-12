@@ -26,11 +26,8 @@
         </activity>
 
         <activity
-
             android:name=".ui.PersonagemActivity">
-
         </activity>
-
 
     </application>
 

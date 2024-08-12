@@ -90,7 +90,8 @@
         android:layout_width="match_parent"
         android:padding="10dp"
         android:layout_margin="20dp"
-        android:visibility="gone"
+        android:visibility="visible"
+        android:backgroundTint="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/btnBackBottom"
         app:layout_constraintTop_toBottomOf="@+id/title"
         android:layout_height="0dp"
@@ -125,5 +126,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
 />
+
+    <ImageView
+        android:id="@+id/iv_empty_state"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/ic_wifi_off"
+        app:layout_constraintBottom_toTopOf="@+id/btnBackBottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_no_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ops_sem_sinal_de_internet"
+        android:textColor="@color/yellowApp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_empty_state"
+        android:visibility="gone"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

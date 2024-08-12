@@ -31,11 +31,6 @@ class MainActivity : AppCompatActivity() {
     setuptabs()
   }
 
-  override fun onResume() {
-    super.onResume()
-    Log.d("RESUME", "RESUME")
-  }
-
   override fun onStart() {
     super.onStart()
     Log.d("START", "START")

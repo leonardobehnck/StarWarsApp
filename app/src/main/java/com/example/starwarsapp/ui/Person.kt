@@ -1,25 +1,32 @@
 package com.example.starwarsapp.ui
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.media.Image
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.ProgressBar
+import android.widget.SimpleAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.starwarsapp.R
 import com.example.starwarsapp.domain.Character
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.json.JSONException
 import org.json.JSONObject
+import org.w3c.dom.Text
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -30,20 +37,43 @@ class PersonagemActivity : AppCompatActivity() {
   lateinit var spinner: Spinner
   lateinit var btnBackbtnBackTop: FloatingActionButton
   lateinit var progress: ProgressBar
+  lateinit var noInternetImg : ImageView
+  lateinit var noInternetText : TextView
 
   var characterList : ArrayList<Character> = ArrayList()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_person)
-    callService()
     setupView()
     setupListeners()
-    checkForInternet()
+
+    if (checkForInternet()) {
+       callService()
+     } else {
+       emptyState()
+     }
 
     val checkInternet = checkForInternet()
     Log.d("There is internet?:", checkInternet.toString())
   //setupSpinner()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    if (checkForInternet()) {
+      callService()
+    } else {
+      emptyState()
+    }
+    Log.d("RESUME", "RESUME")
+  }
+
+  fun emptyState() {
+    lista.visibility = View.GONE
+    noInternetImg.visibility = View.VISIBLE
+    noInternetText.visibility = View.VISIBLE
+    progress.visibility = View.GONE
   }
 
   fun setupView() {
@@ -51,16 +81,19 @@ class PersonagemActivity : AppCompatActivity() {
     btnBackbtnBackTop = findViewById(R.id.btnBackTop)
     lista = findViewById(R.id.lista)
     progress = findViewById(R.id.tbLoader)
+    noInternetImg = findViewById(R.id.iv_empty_state)
+    noInternetText = findViewById(R.id.tv_no_wifi)
     //spinner = findViewById(R.id.spinner)
   }
 
-  fun setupSpinner() {
-    val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, characterList)
-    spinner.adapter = adapter
-  }
+//  fun setupSpinner() {
+//    val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, characterList)
+//    spinner.adapter = adapter
+//  }
 
   fun setupList() {
-    val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, characterList)
+    val names = characterList.map(Character::name)
+    val adapter = ArrayAdapter(this, R.layout.list_item, R.id.text_view, names)
     lista.adapter = adapter
     progress.visibility = VISIBLE
   }
@@ -161,13 +194,17 @@ class PersonagemActivity : AppCompatActivity() {
               gender = gender,
               homeWorld = homeWorld
             )
+
           characterList.add(model)
         }
 
      // Depois de carregar os dados da API chama função para desenhar na tela
       lista.visibility = VISIBLE
       setupList()
+      // Desabilita loader e aviso de conexão com a internet
       progress.visibility = GONE
+      noInternetImg.visibility = View.GONE
+      noInternetText.visibility = View.GONE
     } catch (e: JSONException) {
         Log.e("JSON Error", "Error parsing JSON", e)
           }
@@ -175,6 +212,7 @@ class PersonagemActivity : AppCompatActivity() {
       }
     }
 }
+
 
 
 

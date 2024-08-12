@@ -4,12 +4,9 @@
 	<string name="button_app">Selecionar Personagem</string>
 	<string name="button_back">Voltar</string>
     <string name="luke_skywalker">Seja bem vindo(a) ao meu primeiro App.
-		Avance para selecionar o personagem e obter uma lista das características,
+		Avance para obter uma lista dos personagens de StarWars
 		que foram consumidas de uma API. Obrigado!
     </string>
 	<string name="prompt">Selecione...</string>
-	<string-array name="characters">
-		<item>Luke SkyWalker</item>
-		<item>C3Po</item>
-	</string-array>
+    <string name="ops_sem_sinal_de_internet">Ops, sem sinal de internet.</string>
 </resources>
